@@ -1,0 +1,179 @@
+@font-face {
+    font-family: soleilBold;
+    src: url(fonts/SoleilBold.otf);
+  }
+@font-face {
+    font-family: soleilBook;
+    src: url(fonts/SoleilBook.otf);
+  }
+@font-face {
+    font-family: soleilLight;
+    src: url(fonts/SoleilLight.otf);
+  }
+@font-face {
+    font-family: soleilregular;
+    src: url(fonts/SoleilRegular.otf);
+  }
+@font-face {
+    font-family: Bely;
+    src: url(fonts/Bely.ttf);
+  }
+@font-face {
+    font-family: BelyBold;
+    src: url(fonts/BelyBold.ttf);
+  }
+
+/* colors */
+.c-text-col-one{
+    color: #F1E8D9;
+}
+.c-text-col-two{
+    color: #16433C;
+}
+
+/* font size */
+
+.c-fs-1{
+
+    /* font-size: 40px; */
+    font-size: clamp(21px, 8vw, 48px);
+}
+.c-fs-2{
+    /* font-size: 32px; */
+    font-size: clamp(21px,6vw,32px);
+}
+.c-fs-3{
+    /* font-size: 26px; */
+    font-size: clamp(16px,4vw,26px);
+}
+.c-fs-4{
+    font-size: clamp(10px,3vw,18px);
+
+}
+.c-fs-5{
+    /* font-size: 18px; */
+    font-size: clamp(7px,2vw,12px);
+}
+.c-fs-6{
+    /* font-size: 18px; */
+    font-size: clamp(12px,2vw,18px);
+}
+
+
+
+/* font */
+p{
+    font-family: soleilregular;
+    
+}
+
+.c-f-h{
+    font-family: Bely;
+}
+.c-f-h-b{
+    font-family: BelyBold;
+}
+.c-f-b{
+    font-family: soleilregular;
+}
+.c-f-b-b{
+    font-family: soleilBold;
+}
+
+
+
+/* global */
+body{
+    background-color: #16433C;
+    color: #F1E8D9;
+}
+.c-navbar{
+    font-family: soleilregular;
+    background-color: #E8AE3D;
+    height: clamp(50px,10vw,60px);
+}
+
+.halfkg-logo{
+    width:clamp(108px,20vw,168px);
+    margin: clamp(30px,5vw,60px) 0;
+}
+.hero-sec{
+    height: 100%;
+}
+@media screen and (max-width: 900px) {
+    .hero-sec{
+        height:70vh;
+    }
+
+  }
+@media screen and (max-width: 700px) {
+    .hero-sec{
+        height:60vh;
+    }
+
+  }
+@media screen and (max-width: 500px) {
+    .hero-sec{
+        height:50vh;
+    }
+
+  }
+
+.qr-code{
+    height: 63vh;
+}
+.c-btn{
+    padding: 0;
+}
+
+.c-btn-primary{
+    color: #000000;
+    border: #000000 2px solid;
+}
+.c-btn-primary:hover{
+    color: #ffff;
+    border: #000000 2px solid;
+    background-color: #000000;
+    
+}
+.c-btn-seccond{
+    color: #E8AE3D;
+    border: #16433C 2px solid;
+    background-color: #16433C;
+}
+.c-btn-seccond:hover{
+    color: #ffff;
+    border: #000000 2px solid;
+    background-color: #000000;
+    
+}
+.app-store-btn{
+    width: clamp(150px,40vw,220px)  ;
+}
+.app-store-logo{
+    width: clamp(19px,6vw,33px);
+}
+.chat-w{
+    z-index: 1046;
+    position: fixed;
+    bottom: 2vh;
+    right: 2vh;
+    /* background-color: #dfdfd8; */
+
+}
+.c-cat-bg{
+    background-color: #648782;
+    width: clamp(260px,15vw,284px);
+    height: 120px;
+    color: #F1E8D9;
+}
+.cat-text{
+    font-size: 20px!important;
+}
+
+.catico{
+    width: 65px;
+}
+#catimg{
+    width: 65px;
+}
