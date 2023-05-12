@@ -30,6 +30,9 @@
 .c-text-col-two{
     color: #16433C;
 }
+.smart-text{
+    color: #E8AE3D;
+}
 
 /* font size */
 
@@ -176,4 +179,10 @@ body{
 }
 #catimg{
     width: 65px;
+}
+.footer-bg{
+    margin: 20px 0;
+}
+.f-link{
+    color: #F1E8D9!important;
 }

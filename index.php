@@ -121,7 +121,7 @@ usort($data['records'], function($a, $b) {
 <div class="container px-4 d-flex flex-wrap gap-sm-4 gap-md-5 gap-3 justify-content-between justify-content-sm-start mt-3">
     <?php foreach ($data['records'] as $record): ?>
         <?php $category_url = preg_replace('/\s|&/', '-', strtolower($record['fields']['Category'])); ?>
-        <a href="http://halfkg.store/categories.php?category=<?php echo $category_url; ?>">
+        <a href="/halfkgweb/categories.php?category=<?php echo $category_url; ?>">
         	<div class="d-flex gap-3 px-4 c-cat-bg rounded justify-content-start align-items-center">
             <img class="catico" id="catimg" src="<?php echo $record['fields']['Image'] ?>" alt="<?php echo $record['fields']['Category'] ?>" >
             <h2 class="cat-text"><?php echo $record['fields']['Category'] ?></h2>
@@ -132,16 +132,31 @@ usort($data['records'], function($a, $b) {
 
 
 
-<footer>
-  <nav>
-    <ul>
-      <li><a href="/policies/privacy-policy">Privacy Policy</a></li>
-      <li><a href="/about-us">About Us</a></li>
-      <li><a href="/contact-us">Contact Us</a></li>
-    </ul>
-  </nav>
-  <p>&copy; 2023 Halfkg. All rights reserved.</p>
-</footer>
+<div class="footer-bg col-12">
+        <div class=" flex-wrap container  py-4 gap-3 d-flex justify-content-between">
+            <div class="flex-wrap d-flex gap-3">
+                <a class="f-link" href="#"> About Us</a>
+                <span class="f-link">|</span>
+                <a class="f-link" href="#">Contact Us</a>
+                <span class="f-link">|</span>
+                <a class="f-link" href="#">Privacy Policy</a>
+                <span class="f-link">|</span>
+                <a class="f-link" href="#"> Terms & Conditions</a>
+                <span class="f-link">|</span>
+                <a class="f-link" href="#">Are you a Brand?</a>
+                <span class="f-link">|</span>
+                <a class="f-link" href="#">Are you a Retailer?</a>
+            </div>
+            <div class="d-flex gap-3">
+                <a class="f-link" href="#"><img src="./img/youtube.svg"></a>
+                <a class="f-link" href="#"><img src="./img/insta.svg"></a>
+                <a class="f-link" href="#"><img src="./img/twitter.svg"></a>
+            
+                
+            </div>
+
+        </div>
+    </div>
 
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
