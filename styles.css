@@ -180,8 +180,12 @@ body{
 #catimg{
     width: 65px;
 }
+.main-body{
+    height: 100vh;
+}
 .footer-bg{
     margin: 20px 0;
+   
 }
 .f-link{
     color: #F1E8D9!important;

@@ -121,7 +121,7 @@ usort($data['records'], function($a, $b) {
 <div class="container px-4 d-flex flex-wrap gap-sm-4 gap-md-5 gap-3 justify-content-between justify-content-sm-start mt-3">
     <?php foreach ($data['records'] as $record): ?>
         <?php $category_url = preg_replace('/\s|&/', '-', strtolower($record['fields']['Category'])); ?>
-        <a href="/halfkgweb/categories.php?category=<?php echo $category_url; ?>">
+        <a href="/categories.php?category=<?php echo $category_url; ?>">
         	<div class="d-flex gap-3 px-4 c-cat-bg rounded justify-content-start align-items-center">
             <img class="catico" id="catimg" src="<?php echo $record['fields']['Image'] ?>" alt="<?php echo $record['fields']['Category'] ?>" >
             <h2 class="cat-text"><?php echo $record['fields']['Category'] ?></h2>
