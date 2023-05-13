@@ -21,7 +21,7 @@
     <?php
     if (isset($_GET['category'])) {
       $category = $_GET['category'];
-      print($category);
+      // print($category);
       // Do something with the category parameter
     
       $api_key = 'patjPm0Xom3rKxbc2.e62e1e66195a6c9f8f7e20e043622e6d2f6667c9904919142faf0013e7718b04'; // replace with your Airtable API key
@@ -31,7 +31,7 @@
       // set up API endpoint URL
       $url = 'https://api.airtable.com/v0/' . $base_id . '/' . $table_name . '?filterByFormula=({categorycode}="' . $category . '")&fields%5B%5D=fld8nQhyGBzFyBS2N&fields%5B%5D=flduBp6mPcgpElqhC&fields%5B%5D=fld9i6vp72i91b7Vu&fields%5B%5D=flds4w76OuMT0kh6p';
 
-var_dump($url);
+// var_dump($url);
       // set up request headers
       $headers = [
         'Authorization: Bearer ' . $api_key,
@@ -64,7 +64,7 @@ var_dump($url);
         <?php foreach ($data['records'] as $record): ?>
           <?php $product_url = preg_replace('/[ &\/]/', '-', strtolower($record['fields']['End product'])); ?>
           <a href='http://halfkg.store/products.php?product=<?php echo $product_url; ?>' >
-            <?php var_dump($product_url); ?>
+            <!-- <?php var_dump($product_url); ?> -->
             <div class="d-flex flex-column gap-3 px-4 c-cat-bg rounded justify-content-center align-items-start">
               <h2 class="cat-text">
                 <?php echo $record['fields']['End product'] ?>

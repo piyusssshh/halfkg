@@ -64,6 +64,7 @@
 
 
 
+
 /* font */
 p{
     font-family: soleilregular;
@@ -189,4 +190,8 @@ body{
 }
 .f-link{
     color: #F1E8D9!important;
+}
+.pro-cont{
+    background-color:#F1E8D9 ;
+    color: #16433C;
 }
