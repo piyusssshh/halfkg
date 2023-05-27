@@ -19,8 +19,8 @@
 
 
     <?php
-    if (isset($_GET['category'])) {
-      $category = $_GET['category'];
+    if (isset($_GET['sub-category'])) {
+      $category = $_GET['sub-category'];
       // print($category);
       // Do something with the category parameter
     
@@ -29,7 +29,7 @@
       $table_name = 'tblxrLasUV9sDBdbQ'; // replace with your Airtable table name
     
       // set up API endpoint URL
-      $url = 'https://api.airtable.com/v0/' . $base_id . '/' . $table_name . '?filterByFormula=({categorycode}="' . $category . '")&fields%5B%5D=fld8nQhyGBzFyBS2N&fields%5B%5D=flduBp6mPcgpElqhC&fields%5B%5D=fld9i6vp72i91b7Vu&fields%5B%5D=flds4w76OuMT0kh6p';
+      $url = 'https://api.airtable.com/v0/appttPmFTvYcBaktb/tblxrLasUV9sDBdbQ?filterByFormula=({categorycode}="cooking-oils")&fields[]=fld8nQhyGBzFyBS2N&fields[]=fld8nQhyGBzFyBS2N';
 
 // var_dump($url);
       // set up request headers
@@ -63,20 +63,8 @@
         class="container px-4 d-flex flex-wrap gap-sm-4 gap-md-5 gap-3  justify-content-between justify-content-sm-start mt-3">
         <?php foreach ($data['records'] as $record): ?>
           <?php $product_url = preg_replace('/[ &\/]/', '-', strtolower($record['fields']['End product'])); ?>
-          <?php 
-          
 
-          if (count($record) === 1) {
-
-           echo "<a href='http://halfkg.store/products.php?product=" . $product_url . "'>";
-
-          } else {
-            echo "<a href='/sub-categories.php?sub-category=" . $product_url . "'>";
-          }
-          
-          
-          ?>
-          
+           <a href="http://halfkg.store/products.php?product=<?php echo $category_url; ?> ">
             <div class="d-flex flex-column gap-3 px-4 c-cat-bg rounded justify-content-center align-items-start">
               <h2 class="cat-text">
                 <?php echo $record['fields']['End product'] ?>
@@ -94,10 +82,9 @@
                 ?>
               </p>
             </div>
-          
-        <?php echo "</a>"; ?>
-        
+            </a>
 
+          
         <?php endforeach; ?>
       </div>
 

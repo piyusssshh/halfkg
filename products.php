@@ -25,8 +25,10 @@
     $table_name = 'tblxrLasUV9sDBdbQ'; // replace with your Airtable table name
   
     // set up API endpoint URL
-    $url = 'https://api.airtable.com/v0/appttPmFTvYcBaktb/tblxrLasUV9sDBdbQ?filterByFormula=({productcode}="' . $product . '")&fields%5B%5D=flds4w76OuMT0kh6p&fields%5B%5D=fldCVY4pIbSQ85709&fields%5B%5D=fldWfc5kAZ5aK4U8u&fields%5B%5D=fld8nQhyGBzFyBS2N';
+    
+    // $url = 'https://api.airtable.com/v0/appttPmFTvYcBaktb/tblxrLasUV9sDBdbQ?filterByFormula=({productcode}="' . $product . '")&fields%5B%5D=flds4w76OuMT0kh6p&fields%5B%5D=fldCVY4pIbSQ85709&fields%5B%5D=fldWfc5kAZ5aK4U8u&fields%5B%5D=fld8nQhyGBzFyBS2N&fields%5B%5D=fld42FDkyg2WV8Q3e';
     // var_dump($url);
+    $url = 'https://api.airtable.com/v0/appttPmFTvYcBaktb/Products?filterByFormula=({productcode}="chocolate")&fields%5B%5D=Rich_in_Text&fields%5B%5D=Body+HTML&fields%5B%5D=productcode';
   
     // set up request headers
     $headers = [
@@ -72,7 +74,7 @@
         </h3>
         <p class="c-fs-6 mt-2">
           <?php
-          $names = $record['fields']['Rich in'];
+          $names = $record['fields']['Rich_in_Text'];
           if (is_array($names)) {
             $nameString = implode(', ', $names);
             echo $nameString, "here";
