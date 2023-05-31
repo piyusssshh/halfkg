@@ -20,7 +20,7 @@
 
     <?php
     if (isset($_GET['sub-category'])) {
-      $category = $_GET['sub-category'];
+      $sub_category = $_GET['sub-category'];
       // print($category);
       // Do something with the category parameter
     
@@ -29,9 +29,10 @@
       $table_name = 'tblxrLasUV9sDBdbQ'; // replace with your Airtable table name
     
       // set up API endpoint URL
-      $url = 'https://api.airtable.com/v0/appttPmFTvYcBaktb/tblxrLasUV9sDBdbQ?filterByFormula=({categorycode}="cooking-oils")&fields[]=fld8nQhyGBzFyBS2N&fields[]=fld8nQhyGBzFyBS2N';
+      // $url = 'https://api.airtable.com/v0/appttPmFTvYcBaktb/tblxrLasUV9sDBdbQ?filterByFormula=({categorycode}="'.$sub_category.'")&fields[]=fld8nQhyGBzFyBS2N&fields[]=fld8nQhyGBzFyBS2N&fields[]=fldC9eRGrCj6ZTAtq';
+      // $url = 'https://api.airtable.com/v0/appttPmFTvYcBaktb/tbl99n5BqHp10Qs3K?filterByFormula=({sub-category}="' . $sub_category . '")&fields[]=fld8XXbW2NBFX6Fx1&fields[]=fld42FDkyg2WV8Q3e&fields[]=fldgbFBBOZ0DN6zIa';
+      $url = 'https://api.airtable.com/v0/appttPmFTvYcBaktb/tbl99n5BqHp10Qs3K?filterByFormula=({productcode}="' . $sub_category . '")&fields[]=fld8XXbW2NBFX6Fx1&fields[]=fld42FDkyg2WV8Q3e&fields[]=fldgbFBBOZ0DN6zIa&fields[]=fldaDYIrv3IVUQBG3';
 
-// var_dump($url);
       // set up request headers
       $headers = [
         'Authorization: Bearer ' . $api_key,
@@ -47,6 +48,9 @@
     }
     ;
     $data = json_decode($response, true);
+    // var_dump($data);
+    // echo $url;
+    // var_dump($sub_category);
     ?>
     <div>
     
@@ -54,7 +58,10 @@
         <a href="/"><span class="c-fs-2 c-text-col-one">
             < Home</span></a>
         <span class="c-fs-2 c-text-col-one text-capitalize">
-          <?php echo $category ?>
+          <?php 
+          $replacedString = str_replace('-', ' ', $sub_category);
+          echo $replacedString;
+          ?>
         </span>
         <span>
 
@@ -62,23 +69,22 @@
       <div
         class="container px-4 d-flex flex-wrap gap-sm-4 gap-md-5 gap-3  justify-content-between justify-content-sm-start mt-3">
         <?php foreach ($data['records'] as $record): ?>
-          <?php $product_url = preg_replace('/[ &\/]/', '-', strtolower($record['fields']['End product'])); ?>
+          <?php $product_url = preg_replace('/[ &\/]/', '-', strtolower($record['fields']['Handle'])); ?>
 
-           <a href="http://halfkg.store/products.php?product=<?php echo $category_url; ?> ">
+           <a href="/products.php?product=<?php echo $product_url; ?> ">
             <div class="d-flex flex-column gap-3 px-4 c-cat-bg rounded justify-content-center align-items-start">
               <h2 class="cat-text">
-                <?php echo $record['fields']['End product'] ?>
+                <?php echo $record['fields']['Product Title'] ?>
               </h2>
               <p class="c-fs-5 c-text-col-two c-f-b">
                 Rich In :
                 <?php
-                $names = $record['fields']['Rich in'];
-                if (is_array($names)) {
-                  $nameString = implode(', ', $names);
-                  echo $nameString;
-                } else {
-                  echo "No names found.";
-                }
+                $names = $record['fields']['Rich_in_Text'];
+                if (empty($names)) {
+                  echo "No rich in found.";
+              } else {
+                  echo $names;
+              }
                 ?>
               </p>
             </div>
@@ -91,7 +97,7 @@
     </div>
     <div>
       <div class="container my-4">
-        <h2 class="c-fs-1 c-f-b smart-text">Shop Smart. Live Smart</h2>
+        <h2 class="c-fs-1 c-f-b smart-text">Shop Smart. Live Well</h2>
       </div>
 
 

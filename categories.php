@@ -29,9 +29,10 @@
       $table_name = 'tblxrLasUV9sDBdbQ'; // replace with your Airtable table name
     
       // set up API endpoint URL
-      $url = 'https://api.airtable.com/v0/' . $base_id . '/' . $table_name . '?filterByFormula=({categorycode}="' . $category . '")&fields%5B%5D=fld8nQhyGBzFyBS2N&fields%5B%5D=flduBp6mPcgpElqhC&fields%5B%5D=fld9i6vp72i91b7Vu&fields%5B%5D=flds4w76OuMT0kh6p';
+      // $url = 'https://api.airtable.com/v0/' . $base_id . '/' . $table_name . '?filterByFormula=({categorycode}="' . $category . '")&fields%5B%5D=fld8nQhyGBzFyBS2N&fields%5B%5D=flduBp6mPcgpElqhC&fields%5B%5D=fld9i6vp72i91b7Vu&fields%5B%5D=flds4w76OuMT0kh6p';
+      $url = 'https://api.airtable.com/v0/appttPmFTvYcBaktb/tblxrLasUV9sDBdbQ?filterByFormula=({categorycode}="' . $category . '")&fields[]=fld8nQhyGBzFyBS2N&fields[]=fld8nQhyGBzFyBS2N&fields[]=fldC9eRGrCj6ZTAtq';
 
-// var_dump($url);
+      // var_dump($url);
       // set up request headers
       $headers = [
         'Authorization: Bearer ' . $api_key,
@@ -49,7 +50,7 @@
     $data = json_decode($response, true);
     ?>
     <div>
-    
+
       <div class="container d-flex align-items-center justify-content-between py-4">
         <a href="/"><span class="c-fs-2 c-text-col-one">
             < Home</span></a>
@@ -63,48 +64,52 @@
         class="container px-4 d-flex flex-wrap gap-sm-4 gap-md-5 gap-3  justify-content-between justify-content-sm-start mt-3">
         <?php foreach ($data['records'] as $record): ?>
           <?php $product_url = preg_replace('/[ &\/]/', '-', strtolower($record['fields']['End product'])); ?>
-          <?php 
-          
+          <?php
 
-          if (count($record) === 1) {
 
-           echo "<a href='http://halfkg.store/products.php?product=" . $product_url . "'>";
+          // if (count($data['records']) === 1) {
 
-          } else {
-            echo "<a href='/sub-categories.php?sub-category=" . $product_url . "'>";
-          }
-          
-          
-          ?>
-          
-            <div class="d-flex flex-column gap-3 px-4 c-cat-bg rounded justify-content-center align-items-start">
-              <h2 class="cat-text">
-                <?php echo $record['fields']['End product'] ?>
-              </h2>
-              <p class="c-fs-5 c-text-col-two c-f-b">
-                Rich In :
-                <?php
-                $names = $record['fields']['Rich in'];
-                if (is_array($names)) {
-                  $nameString = implode(', ', $names);
-                  echo $nameString;
-                } else {
-                  echo "No names found.";
-                }
-                ?>
-              </p>
-            </div>
-          
-        <?php echo "</a>"; ?>
-        
+          //   echo "<a href='http://halfkg.store/products.php?product=" . $product_url . "'>";
 
+          // } else {
+          //   echo "<a href='/sub-categories.php?sub-category=" . $product_url . "'>";
+          // }
+
+
+          // ?>
+          <a href="/sub-categories.php?sub-category=<?php echo $product_url; ?>">
+          <!-- <a href="http://halfkg.store/products.php?product=<?php echo $product_url; ?> "> -->
+          <div class="d-flex flex-column gap-3 px-4 c-cat-bg rounded justify-content-center align-items-start">
+            <h2 class="cat-text">
+              <?php echo $record['fields']['End product'] ?>
+            </h2>
+            <p class="c-fs-5 c-text-col-two c-f-b">
+              Rich In :
+              <?php
+              $names = $record['fields']['Rich_in_Text'];
+              if (empty($names)) {
+                  echo "No rich in found.";
+              } else {
+                  echo $names;
+              }
+              
+              ?>
+            </p>
+          </div>
+          </a>
+          <!-- <?php echo "</a>"; ?> -->
         <?php endforeach; ?>
+          <!-- <?php
+         
+          $string = json_encode($data['records']);
+          echo $string;
+          ?> -->
       </div>
 
     </div>
     <div>
       <div class="container my-4">
-        <h2 class="c-fs-1 c-f-b smart-text">Shop Smart. Live Smart</h2>
+        <h2 class="c-fs-1 c-f-b smart-text">Shop Smart. Live Well</h2>
       </div>
 
 

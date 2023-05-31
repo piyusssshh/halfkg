@@ -28,8 +28,7 @@
     
     // $url = 'https://api.airtable.com/v0/appttPmFTvYcBaktb/tblxrLasUV9sDBdbQ?filterByFormula=({productcode}="' . $product . '")&fields%5B%5D=flds4w76OuMT0kh6p&fields%5B%5D=fldCVY4pIbSQ85709&fields%5B%5D=fldWfc5kAZ5aK4U8u&fields%5B%5D=fld8nQhyGBzFyBS2N&fields%5B%5D=fld42FDkyg2WV8Q3e';
     // var_dump($url);
-    $url = 'https://api.airtable.com/v0/appttPmFTvYcBaktb/Products?filterByFormula=({productcode}="chocolate")&fields%5B%5D=Rich_in_Text&fields%5B%5D=Body+HTML&fields%5B%5D=productcode';
-  
+    $url = 'https://api.airtable.com/v0/appttPmFTvYcBaktb/tbl99n5BqHp10Qs3K?filterByFormula=({Handle}="'. $product.'")&fields[]=fld8XXbW2NBFX6Fx1&fields[]=fld42FDkyg2WV8Q3e&fields[]=fldgbFBBOZ0DN6zIa&fields[]=fldaDYIrv3IVUQBG3&fields[]=fldZI4CNLHMLJiEqR';
     // set up request headers
     $headers = [
       'Authorization: Bearer ' . $api_key,
@@ -43,16 +42,20 @@
     $response = curl_exec($ch);
     curl_close($ch);
     // var_dump($response);
-  
+    
     $data = json_decode($response, true);
+    // echo $url;
+    // var_dump("hey");
+    // echo $data;
   }
+  
   ?>
   <?php foreach ($data['records'] as $record): ?>
     <div class="container d-flex align-items-center justify-content-between py-4">
       <a href="/"><span class="c-fs-3 c-text-col-one">
           < Home</span></a>
       <span class="c-fs-2 c-text-col-one text-capitalize">
-        <?php echo $record['fields']['End product'] ?>
+        <?php echo $record['fields']['Product Title'] ?>
       </span>
       <span>
 
@@ -64,10 +67,10 @@
       <div class="col-8">
         <h3 class=" c-f-b-b c-fs-6">
           Uses of
-          <?php echo $record['fields']['End product'] ?> :
+          <?php echo $record['fields']['Product Title'] ?> :
         </h3>
         <p class="c-fs-6 mt-2">
-          <?php echo $record['fields']['Description'] ?>
+          <?php echo $record['fields']['Body HTML'] ?>
         </p>
         <h3 class="c-f-b-b c-fs-6 mt-3">
           Rich in :
@@ -75,12 +78,11 @@
         <p class="c-fs-6 mt-2">
           <?php
           $names = $record['fields']['Rich_in_Text'];
-          if (is_array($names)) {
-            $nameString = implode(', ', $names);
-            echo $nameString, "here";
-          } else {
-            echo "No names found.";
-          }
+          if (empty($names)) {
+            echo "No rich in found.";
+        } else {
+            echo $names;
+        }
           ?>
         </p>
       </div>
@@ -88,7 +90,7 @@
   <?php endforeach; ?>
   <div>
     <div class="container my-4">
-      <h2 class="c-fs-1 c-f-b smart-text">Shop Smart. Live Smart</h2>
+      <h2 class="c-fs-1 c-f-b smart-text">Shop Smart. Live Well.</h2>
     </div>
 
 
