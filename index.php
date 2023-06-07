@@ -122,9 +122,9 @@ usort($data['records'], function($a, $b) {
     <?php foreach ($data['records'] as $record): ?>
         <?php $category_url = preg_replace('/\s|&/', '-', strtolower($record['fields']['Category'])); ?>
         <a href="/categories.php?category=<?php echo $category_url; ?>">
-        	<div class="d-flex gap-3 px-4 c-cat-bg rounded justify-content-start align-items-center">
+        	<div class="d-flex flex-column flex-sm-row gap-3 px-4 py-2 c-cat-bg rounded justify-content-sm-start justify-content-center align-items-center">
             <img class="catico" id="catimg" src="<?php echo $record['fields']['Image'] ?>" alt="<?php echo $record['fields']['Category'] ?>" >
-            <h2 class="cat-text"><?php echo $record['fields']['Category'] ?></h2>
+            <h2 class="cattext"><?php echo $record['fields']['Category'] ?></h2>
         </div>
     </a>
     <?php endforeach; ?>

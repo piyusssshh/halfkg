@@ -167,8 +167,8 @@ body{
 }
 .c-cat-bg{
     background-color: #648782;
-    width: clamp(260px,15vw,284px);
-    height: 120px;
+    width: clamp(120px,25vw,280px);
+    height: 140px;
     color: #F1E8D9;
 }
 .cat-text{
@@ -176,11 +176,12 @@ body{
 }
 
 .catico{
-    width: 65px;
+    width: clamp(24px,10vw,65px);
 }
-#catimg{
-    width: 65px;
+.cattext{
+    font-size: clamp(15px,3vw,24px);
 }
+
 .main-body{
     height: 100vh;
 }
